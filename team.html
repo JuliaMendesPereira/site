@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('home') }}" class="back-link">&larr; Voltar para a Home</a>
+        <h1>{{ team.name }}</h1>
+    </header>
+    <main>
+        <div class="team-details">
+            <img src="{{ url_for('static', filename='images/' + team.logo) }}" alt="Logo {{ team.name }}" class="team-logo-large">
+            
+            <h2>Jogadores</h2>
+            <ul class="player-list">
+                {% for player in team.players %}
+                <li>
+                    <span class="player-number">{{ player.number }}</span>
+                    <span class="player-name">{{ player.name }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

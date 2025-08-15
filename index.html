@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times de Basquete</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Times de Basquete</h1>
+    </header>
+    <main>
+        <div class="team-list">
+            {% for team_id, team in teams.items() %}
+            <div class="team-card">
+                <a href="{{ url_for('team_page', team_id=team_id) }}">
+                    <img src="{{ url_for('static', filename='image/' + team.logo) }}" alt="Logo {{ team.name }}" class="team-logo">
+                    <h2>{{ team.name }}</h2>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
